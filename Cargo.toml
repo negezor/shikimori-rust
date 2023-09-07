@@ -1,0 +1,39 @@
+[package]
+name = "shikimori"
+version = "0.1.0"
+edition = "2021"
+description = "An unofficial async Rust library that allows you to interact with the Shikimori API"
+authors = ["Negezor <negezor@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/negezor/shikimori-rust"
+keywords = ["shikimori", "api", "sdk", "wrapper", "async"]
+categories = ["api-bindings"]
+
+[features]
+default = ["rustls-tls"]
+native-tls = ["reqwest/native-tls"]
+rustls-tls = ["reqwest/rustls-tls"]
+
+[dependencies]
+reqwest = { version = "0.11.20", default-features = false, features = ["json"] }
+serde = { version = "1.0.188", features = ["derive"] }
+comma_serde_urlencoded = { version = "0.8.1" }
+thiserror = { version = "1.0.48" }
+chrono = { version = "0.4.29", features = ["serde"] }
+url = { version = "2.4.1" }
+serde_json = { version = "1.0.105" }
+futures = { version = "0.3.28", default-features = false, features = ["std"] }
+async-fn-stream = { version = "0.2.0" }
+# time = { version = "0.3.28", features = ["serde-human-readable"] }
+tower = { version = "0.4.13", features = ["limit", "buffer", "util"] }
+cynic = { version = "3.2.2" }
+
+[dev-dependencies]
+tokio = { version = "1.32.0", features = [
+    "macros",
+    "rt-multi-thread"
+] }
+
+[build-dependencies]
+cynic-codegen = { version = "3.2.2" }
