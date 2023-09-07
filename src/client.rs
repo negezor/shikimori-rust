@@ -41,7 +41,7 @@ impl ClientBuilder {
     /// API key (token) for Shikimori API
     ///
     /// ```
-    /// use shikimori::ClientBuilder;
+    /// use shikimori::client::ClientBuilder;
     ///
     /// ClientBuilder::new()
     ///   .api_key("q8p5vnf9crt7xfyzke4iwc6r5rvsurv7");
@@ -56,7 +56,7 @@ impl ClientBuilder {
     /// Default: `https://shikimori.me/api`
     ///
     /// ```
-    /// use shikimori::ClientBuilder;
+    /// use shikimori::client::ClientBuilder;
     ///
     /// ClientBuilder::new()
     ///   .api_url("https://shikimori.rs/api");
@@ -67,7 +67,7 @@ impl ClientBuilder {
     }
 
     /// ```
-    /// use shikimori::ClientBuilder;
+    /// use shikimori::client::ClientBuilder;
     ///
     /// ClientBuilder::new()
     ///   .proxy(reqwest::Proxy::http("https://my.prox").unwrap());
@@ -78,7 +78,7 @@ impl ClientBuilder {
     }
 
     /// ```
-    /// use shikimori::ClientBuilder;
+    /// use shikimori::client::ClientBuilder;
     ///
     /// ClientBuilder::new()
     ///   .custom_reqwest_builder(reqwest::ClientBuilder::new());
@@ -89,7 +89,7 @@ impl ClientBuilder {
     }
 
     /// ```
-    /// use shikimori::ClientBuilder;
+    /// use shikimori::client::ClientBuilder;
     ///
     /// ClientBuilder::new()
     ///   .user_agent("");
@@ -104,9 +104,13 @@ impl ClientBuilder {
     /// If api_key is not set and if it was not possible to build http client
     ///
     /// ```
-    /// use shikimori::ClientBuilder;
+    /// use shikimori::client::ClientBuilder;
     ///
-    /// ClientBuilder::new().api_key("q8p5vnf9crt7xfyzke4iwc6r5rvsurv7").build();
+    /// #[tokio::main]
+    /// async fn main() {
+    ///
+    ///    ClientBuilder::new().api_key("q8p5vnf9crt7xfyzke4iwc6r5rvsurv7").build();
+    /// }
     /// ```
     pub fn build(self) -> Client {
         let http_client = self
@@ -149,13 +153,15 @@ impl Client {
     /// Create a client
     ///
     /// # Example
-    ///
     /// ```
-    /// # use shikimori::Client;
+    /// use shikimori::client::Client;
     ///
-    /// let api_key = std::env::var("SHIKIMORI_API_KEY").expect("SHIKIMORI_API_KEY is not set");
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let api_key = std::env::var("SHIKIMORI_API_KEY").expect("SHIKIMORI_API_KEY is not set");
     ///
-    /// let client = Client::new(api_key);
+    ///     let client = Client::new(api_key);
+    /// }
     /// ```
     pub fn new(api_key: impl Into<String>) -> Client {
         ClientBuilder::new().api_key(api_key).build()
