@@ -41,7 +41,7 @@ impl ClientBuilder {
     /// API key (token) for Shikimori API
     ///
     /// ```
-    /// use shikimori_api::ClientBuilder;
+    /// use shikimori::ClientBuilder;
     ///
     /// ClientBuilder::new()
     ///   .api_key("q8p5vnf9crt7xfyzke4iwc6r5rvsurv7");
@@ -56,7 +56,7 @@ impl ClientBuilder {
     /// Default: `https://shikimori.me/api`
     ///
     /// ```
-    /// use shikimori_api::ClientBuilder;
+    /// use shikimori::ClientBuilder;
     ///
     /// ClientBuilder::new()
     ///   .api_url("https://shikimori.rs/api");
@@ -67,7 +67,7 @@ impl ClientBuilder {
     }
 
     /// ```
-    /// use shikimori_api::ClientBuilder;
+    /// use shikimori::ClientBuilder;
     ///
     /// ClientBuilder::new()
     ///   .proxy(reqwest::Proxy::http("https://my.prox").unwrap());
@@ -78,7 +78,7 @@ impl ClientBuilder {
     }
 
     /// ```
-    /// use shikimori_api::ClientBuilder;
+    /// use shikimori::ClientBuilder;
     ///
     /// ClientBuilder::new()
     ///   .custom_reqwest_builder(reqwest::ClientBuilder::new());
@@ -89,7 +89,7 @@ impl ClientBuilder {
     }
 
     /// ```
-    /// use shikimori_api::ClientBuilder;
+    /// use shikimori::ClientBuilder;
     ///
     /// ClientBuilder::new()
     ///   .user_agent("");
@@ -104,7 +104,7 @@ impl ClientBuilder {
     /// If api_key is not set and if it was not possible to build http client
     ///
     /// ```
-    /// use shikimori_api::ClientBuilder;
+    /// use shikimori::ClientBuilder;
     ///
     /// ClientBuilder::new().api_key("q8p5vnf9crt7xfyzke4iwc6r5rvsurv7").build();
     /// ```
@@ -151,7 +151,7 @@ impl Client {
     /// # Example
     ///
     /// ```
-    /// # use shikimori_api::Client;
+    /// # use shikimori::Client;
     ///
     /// let api_key = std::env::var("SHIKIMORI_API_KEY").expect("SHIKIMORI_API_KEY is not set");
     ///
