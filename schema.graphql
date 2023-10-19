@@ -523,6 +523,7 @@ type Query {
     order: OrderEnum = ranked
     kind: MangaKindString
     status: StatusString
+    season: SeasonString
 
     # Minimal manga score
     score: Int
