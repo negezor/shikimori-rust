@@ -25,7 +25,7 @@ cargo add shikimori
 
 ## Usage
 
-You should also use [querygen](https://generator.cynic-rs.dev) to simplify your life, it is available at the link. Get the schema at URL `https://shikimori.me/api/graphql`
+You should also use [querygen](https://generator.cynic-rs.dev) to simplify your life, it is available at the link. Get the schema at URL `https://shikimori.one/api/graphql`
 
 ```rs
 use chrono::{DateTime, Utc};
@@ -96,7 +96,7 @@ async fn main() {
 //                         next_episode_at: Some(
 //                             2023-09-10T00:30:00Z,
 //                         ),
-//                         url: "https://shikimori.me/animes/21-one-piece",
+//                         url: "https://shikimori.one/animes/21-one-piece",
 //                     },
 //                     Anime {
 //                         id: Id(
@@ -112,7 +112,7 @@ async fn main() {
 //                         next_episode_at: Some(
 //                             2023-09-07T14:56:00Z,
 //                         ),
-//                         url: "https://shikimori.me/animes/51009-jujutsu-kaisen-2nd-season",
+//                         url: "https://shikimori.one/animes/51009-jujutsu-kaisen-2nd-season",
 //                     },
 //                 ],
 //             },

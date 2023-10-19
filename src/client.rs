@@ -33,7 +33,7 @@ impl ClientBuilder {
     pub fn new() -> ClientBuilder {
         ClientBuilder {
             api_key: None,
-            api_url: "https://shikimori.me/api".to_owned(),
+            api_url: "https://shikimori.one/api".to_owned(),
             reqwest_client_builder: ReqwestClientBuilder::new().user_agent(CRATE_USER_AGENT),
         }
     }
@@ -53,7 +53,7 @@ impl ClientBuilder {
 
     /// Base URL for Shikimori API
     ///
-    /// Default: `https://shikimori.me/api`
+    /// Default: `https://shikimori.one/api`
     ///
     /// ```
     /// use shikimori::client::ClientBuilder;
