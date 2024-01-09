@@ -30,7 +30,7 @@ pub enum AnimeRating {
 
 #[derive(cynic::Enum, Clone, Hash, PartialEq, Eq, Debug)]
 #[cynic(graphql_type = "AnimeStatusEnum", rename_all = "snake_case")]
-pub enum AnimeStatusEnum {
+pub enum AnimeStatus {
     #[cynic(rename = "anons")]
     Announce,
     Ongoing,
