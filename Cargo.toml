@@ -21,19 +21,19 @@ serde = { version = "1.0", features = ["derive"] }
 comma_serde_urlencoded = { version = "0.8" }
 thiserror = { version = "1.0" }
 chrono = { version = "0.4", features = ["serde"] }
-url = { version = "2.4" }
+url = { version = "2.5" }
 serde_json = { version = "1.0" }
 futures = { version = "0.3", default-features = false, features = ["std"] }
 async-fn-stream = { version = "0.2" }
 # time = { version = "0.3", features = ["serde-human-readable"] }
 tower = { version = "0.4", features = ["limit", "buffer", "util"] }
-cynic = { version = "3.2" }
+cynic = { version = "3.4" }
 
 [dev-dependencies]
-tokio = { version = "1.33", features = [
+tokio = { version = "1.35", features = [
     "macros",
     "rt-multi-thread"
 ] }
 
 [build-dependencies]
-cynic-codegen = { version = "3.2" }
+cynic-codegen = { version = "3.4" }
