@@ -11,3 +11,14 @@ pub enum MangaKind {
     OneShot,
     Doujin,
 }
+
+#[derive(cynic::Enum, Clone, Hash, PartialEq, Eq, Debug)]
+#[cynic(graphql_type = "MangaStatusEnum", rename_all = "snake_case")]
+pub enum MangaStatusEnum {
+    #[cynic(rename = "anons")]
+    Announce,
+    Ongoing,
+    Released,
+    Paused,
+    Discontinued,
+}

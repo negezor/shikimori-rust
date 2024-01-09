@@ -32,12 +32,3 @@ pub enum EntityOrder {
     /// created_at_desc
     CreatedAtDesc,
 }
-
-#[derive(cynic::Enum, Clone, Hash, PartialEq, Eq, Debug)]
-#[cynic(graphql_type = "StatusEnum", rename_all = "snake_case")]
-pub enum EntityStatus {
-    #[cynic(rename = "anons")]
-    Announce,
-    Ongoing,
-    Released,
-}

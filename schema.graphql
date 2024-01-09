@@ -40,10 +40,11 @@ type Anime {
   scoresStats: [ScoreStat!]
   screenshots: [Screenshot!]!
   season: String
-  status: StatusEnum
+  status: AnimeStatusEnum
   statusesStats: [StatusStat!]
   studios: [Studio!]!
   synonyms: [String!]!
+  topic: Topic
   updatedAt: ISO8601DateTime!
   url: String!
   userRate: UserRate
@@ -66,8 +67,17 @@ enum AnimeKindEnum {
   # Special
   special
 
+  # TV Special
+  tv_special
+
   # Music
   music
+
+  # PV
+  pv
+
+  # CM
+  cm
 }
 
 # List of values separated by comma.
@@ -93,6 +103,12 @@ enum AnimeKindEnum {
 # `tv_24` - Average TV Series
 #
 # `tv_48` - Long TV Series
+#
+# `tv_special` - TV Specials
+#
+# `pv` - Promotional Videos
+#
+# `cm` - Commercial Messages
 scalar AnimeKindString
 
 enum AnimeRatingEnum {
@@ -118,6 +134,32 @@ enum AnimeRatingEnum {
   rx
 }
 
+enum AnimeStatusEnum {
+  # Planned
+  anons
+
+  # Airing
+  ongoing
+
+  # Released
+  released
+}
+
+# List of values separated by comma.
+# Add `!` before value to apply negative filter.
+#
+#
+# `anons` - Planned
+#
+# `ongoing` - Publishing
+#
+# `released` - Published
+#
+# `paused` - Paused
+#
+# `discontinued` - Discontinued
+scalar AnimeStatusString
+
 type Character {
   createdAt: ISO8601DateTime!
   description: String
@@ -133,6 +175,7 @@ type Character {
   poster: Poster
   russian: String
   synonyms: [String!]!
+  topic: Topic
   updatedAt: ISO8601DateTime!
   url: String!
 }
@@ -156,10 +199,10 @@ type CharacterRole {
 scalar DurationString
 
 type ExternalLink {
-  createdAt: ISO8601DateTime!
-  id: ID!
+  createdAt: ISO8601DateTime
+  id: ID
   kind: ExternalLinkKindEnum!
-  updatedAt: ISO8601DateTime!
+  updatedAt: ISO8601DateTime
   url: String!
 }
 
@@ -251,11 +294,11 @@ enum GenreEntryTypeEnum {
 }
 
 enum GenreKindEnum {
-  # Genre
-  genre
-
   # Demographic
   demographic
+
+  # Genre
+  genre
 
   # Theme
   theme
@@ -304,9 +347,10 @@ type Manga {
   russian: String
   score: Float
   scoresStats: [ScoreStat!]
-  status: StatusEnum
+  status: MangaStatusEnum
   statusesStats: [StatusStat!]
   synonyms: [String!]!
+  topic: Topic
   updatedAt: ISO8601DateTime!
   url: String!
   userRate: UserRate
@@ -354,6 +398,34 @@ enum MangaKindEnum {
 #
 # `one_shot` - One Shots
 scalar MangaKindString
+
+enum MangaStatusEnum {
+  # Planned
+  anons
+
+  # Publishing
+  ongoing
+
+  # Published
+  released
+
+  # Paused
+  paused
+
+  # Discontinued
+  discontinued
+}
+
+# List of values separated by comma.
+# Add `!` before value to apply negative filter.
+#
+#
+# `anons` - Planned
+#
+# `ongoing` - Airing
+#
+# `released` - Released
+scalar MangaStatusString
 
 type Mutation {
   # An example field added by the generator
@@ -435,6 +507,7 @@ type Person {
   poster: Poster
   russian: String
   synonyms: [String!]!
+  topic: Topic
   updatedAt: ISO8601DateTime!
   url: String!
   website: String
@@ -477,7 +550,7 @@ type Query {
     limit: Int = 2
     order: OrderEnum = ranked
     kind: AnimeKindString
-    status: StatusString
+    status: MangaStatusString
     season: SeasonString
 
     # Minimal anime score
@@ -522,7 +595,7 @@ type Query {
     limit: Int = 2
     order: OrderEnum = ranked
     kind: MangaKindString
-    status: StatusString
+    status: AnimeStatusString
     season: SeasonString
 
     # Minimal manga score
@@ -627,37 +700,28 @@ type Screenshot {
 #
 scalar SeasonString
 
-enum StatusEnum {
-  # Planned
-  anons
-
-  # Airing
-  ongoing
-
-  # Released
-  released
-}
-
 type StatusStat {
   count: Int!
   status: UserRateStatusEnum!
 }
 
-# List of values separated by comma.
-# Add `!` before value to apply negative filter.
-#
-#
-# `anons` - Planned
-#
-# `ongoing` - Airing
-#
-# `released` - Released
-scalar StatusString
-
 type Studio {
   id: ID!
   imageUrl: String
   name: String!
+}
+
+type Topic {
+  body: String!
+  commentsCount: Int!
+  createdAt: ISO8601DateTime!
+  htmlBody: String!
+  id: ID
+  tags: [String!]!
+  title: String!
+  type: String!
+  updatedAt: ISO8601DateTime!
+  url: String!
 }
 
 type User {
@@ -712,10 +776,12 @@ enum UserRateTargetTypeEnum {
 }
 
 type Video {
-  id: ID
-  kind: VideoKindEnum
+  id: ID!
+  imageUrl: String!
+  kind: VideoKindEnum!
   name: String
-  url: String
+  playerUrl: String!
+  url: String!
 }
 
 enum VideoKindEnum {

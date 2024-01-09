@@ -115,19 +115,38 @@ impl SeasonString {
 }
 
 #[derive(cynic::Scalar, Debug)]
-pub struct StatusString(String);
+pub struct AnimeStatusString(String);
 
-impl StatusString {
+impl AnimeStatusString {
     pub fn new(s: impl Into<String>) -> Self {
         Self(s.into())
     }
 
-    /// Returns a reference to the value of this `StatusString`
+    /// Returns a reference to the value of this `AnimeStatusString`
     pub fn inner(&self) -> &str {
         &self.0
     }
 
-    /// Converts this `StatusString` into its inner value
+    /// Converts this `AnimeStatusString` into its inner value
+    pub fn into_inner(self) -> String {
+        self.0
+    }
+}
+
+#[derive(cynic::Scalar, Debug)]
+pub struct MangaStatusString(String);
+
+impl MangaStatusString {
+    pub fn new(s: impl Into<String>) -> Self {
+        Self(s.into())
+    }
+
+    /// Returns a reference to the value of this `MangaStatusString`
+    pub fn inner(&self) -> &str {
+        &self.0
+    }
+
+    /// Converts this `MangaStatusString` into its inner value
     pub fn into_inner(self) -> String {
         self.0
     }
