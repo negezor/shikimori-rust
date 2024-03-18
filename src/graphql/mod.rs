@@ -9,6 +9,8 @@ pub mod genre;
 
 pub mod user_rates;
 
+pub mod contest;
+
 pub mod external_link;
 
 pub mod scalars;
