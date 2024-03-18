@@ -151,13 +151,9 @@ enum AnimeStatusEnum {
 #
 # `anons` - Planned
 #
-# `ongoing` - Publishing
+# `ongoing` - Airing
 #
-# `released` - Published
-#
-# `paused` - Paused
-#
-# `discontinued` - Discontinued
+# `released` - Released
 scalar AnimeStatusString
 
 type Character {
@@ -185,6 +181,101 @@ type CharacterRole {
   id: ID!
   rolesEn: [String!]!
   rolesRu: [String!]!
+}
+
+type Contest {
+  description: String
+  descriptionHtml: String
+  descriptionSource: String
+  finishedOn: ISO8601Date
+  id: ID!
+  matchDuration: Int
+  matchesInterval: Int
+  matchesPerRound: Int
+  memberType: ContestMemberTypeEnum!
+  name: String!
+  rounds: [ContestRound!]!
+  startedOn: ISO8601Date
+  state: ContestStateEnum!
+  strategyType: ContestStrategyTypeEnum!
+}
+
+type ContestMatch {
+  id: ID!
+  leftAnime: Anime
+  leftCharacter: Character
+  leftId: Int
+  leftVotes: Int
+  rightAnime: Anime
+  rightCharacter: Character
+  rightId: Int
+  rightVotes: Int
+  state: ContestMatchStateEnum!
+  winnerId: Int
+}
+
+enum ContestMatchStateEnum {
+  # created
+  created
+
+  # started
+  started
+
+  # finished
+  finished
+}
+
+enum ContestMemberTypeEnum {
+  # Anime
+  anime
+
+  # Characters
+  character
+}
+
+type ContestRound {
+  id: ID!
+  isAdditional: Boolean!
+  matches: [ContestMatch!]!
+  name: String!
+  number: Int!
+  state: ContestRoundStateEnum!
+}
+
+enum ContestRoundStateEnum {
+  # created
+  created
+
+  # started
+  started
+
+  # finished
+  finished
+}
+
+enum ContestStateEnum {
+  # created
+  created
+
+  # proposing
+  proposing
+
+  # started
+  started
+
+  # finished
+  finished
+}
+
+enum ContestStrategyTypeEnum {
+  # Double elimination
+  double_elimination
+
+  # Olympic system
+  play_off
+
+  # Swiss system
+  swiss
 }
 
 # List of values separated by comma.
@@ -422,9 +513,13 @@ enum MangaStatusEnum {
 #
 # `anons` - Planned
 #
-# `ongoing` - Airing
+# `ongoing` - Publishing
 #
-# `released` - Released
+# `released` - Published
+#
+# `paused` - Paused
+#
+# `discontinued` - Discontinued
 scalar MangaStatusString
 
 type Mutation {
@@ -550,7 +645,7 @@ type Query {
     limit: Int = 2
     order: OrderEnum = ranked
     kind: AnimeKindString
-    status: MangaStatusString
+    status: AnimeStatusString
     season: SeasonString
 
     # Minimal anime score
@@ -586,6 +681,13 @@ type Query {
     ids: [ID!]
     search: String
   ): [Character!]!
+  contests(
+    page: Int = 1
+
+    # Maximum 10
+    limit: Int = 2
+    ids: [ID!]
+  ): [Contest!]!
   currentUser: User
   genres(entryType: GenreEntryTypeEnum!): [Genre!]!
   mangas(
@@ -595,7 +697,7 @@ type Query {
     limit: Int = 2
     order: OrderEnum = ranked
     kind: MangaKindString
-    status: AnimeStatusString
+    status: MangaStatusString
     season: SeasonString
 
     # Minimal manga score
