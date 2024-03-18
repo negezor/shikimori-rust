@@ -30,7 +30,7 @@ tower = { version = "0.4", features = ["limit", "buffer", "util"] }
 cynic = { version = "3.4" }
 
 [dev-dependencies]
-tokio = { version = "1.35", features = [
+tokio = { version = "1.36", features = [
     "macros",
     "rt-multi-thread"
 ] }
