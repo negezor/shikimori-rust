@@ -4,11 +4,7 @@ use reqwest::{
     Client as ReqwestClient, ClientBuilder as ReqwestClientBuilder, Method, Proxy, Request,
     RequestBuilder, Response,
 };
-use tower::{
-    buffer::Buffer,
-    limit::{ConcurrencyLimit, RateLimit},
-    BoxError, Service, ServiceExt,
-};
+use tower::{buffer::Buffer, limit::RateLimit, BoxError, Service, ServiceExt};
 
 use cynic::{GraphQlResponse, Operation};
 
@@ -145,7 +141,7 @@ pub struct Client {
     api_key: Option<String>,
     api_url: String,
     http_client: ReqwestClient,
-    http_service: Buffer<ConcurrencyLimit<RateLimit<RateLimit<ReqwestClient>>>, Request>,
+    http_service: Buffer<RateLimit<RateLimit<ReqwestClient>>, Request>,
 }
 
 impl Client {
