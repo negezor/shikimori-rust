@@ -124,7 +124,6 @@ impl ClientBuilder {
             http_client: http_client.clone(),
             http_service: tower::ServiceBuilder::new()
                 .buffer(10)
-                .concurrency_limit(5)
                 // 90rpm, here are small compensation network costs
                 .rate_limit(90, Duration::from_millis(92000))
                 // 5rps, here are small compensation network costs
