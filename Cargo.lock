@@ -1142,7 +1142,7 @@ dependencies = [
  "comma_serde_urlencoded",
  "cynic",
  "cynic-codegen",
- "futures",
+ "futures-util",
  "reqwest",
  "serde",
  "serde_json",

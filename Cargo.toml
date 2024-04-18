@@ -24,7 +24,7 @@ thiserror = { version = "1.0" }
 chrono = { version = "0.4", default-features = false, features = ["serde"] }
 url = { version = "2.5" }
 serde_json = { version = "1.0" }
-futures = { version = "0.3", default-features = false, features = ["std"] }
+futures-util = { version = "0.3", default-features = false, features = ["std"] }
 async-fn-stream = { version = "0.2" }
 # time = { version = "0.3", features = ["serde-human-readable"] }
 tower = { version = "0.4", features = ["limit", "buffer", "util"] }
