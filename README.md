@@ -35,13 +35,13 @@ use shikimori::cynic::QueryBuilder;
 
 use shikimori::graphql::anime::AnimeKind;
 use shikimori::graphql::types::EntityOrder;
-use shikimori::graphql::scalars::StatusString;
+use shikimori::graphql::scalars::AnimeStatusString;
 use shikimori::graphql::schema;
 
 #[derive(cynic::QueryVariables, Debug)]
 pub struct AnimesQueryVariables {
     pub page: i32,
-    pub status: StatusString,
+    pub status: AnimeStatusString,
     pub order: EntityOrder,
 }
 
