@@ -28,13 +28,13 @@ futures-util = { version = "0.3", default-features = false, features = ["std"] }
 async-fn-stream = { version = "0.2" }
 # time = { version = "0.3", features = ["serde-human-readable"] }
 tower = { version = "0.4", features = ["limit", "buffer", "util"] }
-cynic = { version = "3.6" }
+cynic = { version = "3.7" }
 
 [dev-dependencies]
-tokio = { version = "1.37", features = [
+tokio = { version = "1.38", features = [
     "macros",
     "rt-multi-thread"
 ] }
 
 [build-dependencies]
-cynic-codegen = { version = "3.6" }
+cynic-codegen = { version = "3.7" }
