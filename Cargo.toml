@@ -15,7 +15,7 @@ rust-version = "1.72"
 default = ["rustls-tls"]
 native-tls = ["reqwest/native-tls"]
 rustls-tls = ["reqwest/rustls-tls"]
-register-graphql-schema = ["cynic-codegen"]
+register-graphql-schema = ["dep:cynic-codegen"]
 
 [dependencies]
 reqwest = { version = "0.12", default-features = false, features = ["json"] }
