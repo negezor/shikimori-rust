@@ -14,7 +14,7 @@ pub enum UserRateOrderField {
     Id,
 
     /// By updated_at
-    UpdatedAt
+    UpdatedAt,
 }
 
 #[derive(cynic::Enum, Clone, Hash, PartialEq, Eq, Debug)]

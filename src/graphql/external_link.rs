@@ -36,7 +36,6 @@ pub enum ExternalLinkKind {
     /// Anime 365
     SmotretAnime,
 
-
     /// Crunchyroll
     Crunchyroll,
 
