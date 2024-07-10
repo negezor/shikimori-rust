@@ -36,6 +36,43 @@ pub enum ExternalLinkKind {
     /// Anime 365
     SmotretAnime,
 
+
+    /// Crunchyroll
+    Crunchyroll,
+
+    /// Wakanim
+    Wakanim,
+
+    /// Amazon
+    Amazon,
+
+    /// Hidive
+    Hidive,
+
+    /// Hulu
+    Hulu,
+
+    /// Ivi
+    Ivi,
+
+    /// KinoPoisk HD
+    KinopoiskHd,
+
+    /// Wink
+    Wink,
+
+    /// Netflix
+    Netflix,
+
+    /// Okko
+    Okko,
+
+    /// more.tv
+    MoreTv,
+
+    /// Youtube
+    Youtube,
+
     /// ReadManga
     Readmanga,
 

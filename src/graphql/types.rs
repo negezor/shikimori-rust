@@ -32,3 +32,50 @@ pub enum EntityOrder {
     /// created_at_desc
     CreatedAtDesc,
 }
+
+#[derive(cynic::Enum, Clone, Hash, PartialEq, Eq, Debug)]
+#[cynic(graphql_type = "SortOrderEnum", rename_all = "snake_case")]
+pub enum EntitySort {
+    Asc,
+    Desc,
+}
+
+#[derive(cynic::Enum, Clone, Hash, PartialEq, Eq, Debug)]
+#[cynic(graphql_type = "RelationKindEnum", rename_all = "snake_case")]
+pub enum RelationKind {
+    /// Adaptation
+    Adaptation,
+
+    /// Alternative Setting
+    AlternativeSetting,
+
+    /// Alternative Version
+    AlternativeVersion,
+
+    /// Character
+    Character,
+
+    /// Full Story
+    FullStory,
+
+    /// Parent Story
+    ParentStory,
+
+    /// Prequel
+    Prequel,
+
+    /// Sequel
+    Sequel,
+
+    /// Side Story
+    SideStory,
+
+    /// Spin-off
+    SpinOff,
+
+    /// Summary
+    Summary,
+
+    /// Other
+    Other,
+}

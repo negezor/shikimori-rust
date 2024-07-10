@@ -4,6 +4,7 @@ directive @oneOf on INPUT_OBJECT
 type Anime {
   airedOn: IncompleteDate
   characterRoles: [CharacterRole!]
+  chronology: [Anime!]
   createdAt: ISO8601DateTime!
   description: String
   descriptionHtml: String
@@ -325,11 +326,47 @@ enum ExternalLinkKindEnum {
   # subs.com.ru
   subs_com_ru
 
-  # Twitter
+  # Twitter/X
   twitter
 
   # Anime 365
   smotret_anime
+
+  # Crunchyroll
+  crunchyroll
+
+  # Wakanim
+  wakanim
+
+  # Amazon
+  amazon
+
+  # Hidive
+  hidive
+
+  # Hulu
+  hulu
+
+  # Ivi
+  ivi
+
+  # KinoPoisk HD
+  kinopoisk_hd
+
+  # Wink
+  wink
+
+  # Netflix
+  netflix
+
+  # Okko
+  okko
+
+  # more.tv
+  more_tv
+
+  # Youtube
+  youtube
 
   # ReadManga
   readmanga
@@ -412,6 +449,7 @@ type Manga {
   airedOn: IncompleteDate
   chapters: Int!
   characterRoles: [CharacterRole!]
+  chronology: [Manga!]
   createdAt: ISO8601DateTime!
   description: String
   descriptionHtml: String
@@ -615,6 +653,9 @@ type PersonRole {
   rolesRu: [String!]!
 }
 
+# A positive integer (>= 1)
+scalar PositiveInt
+
 type Poster {
   id: ID!
   main2xUrl: String!
@@ -639,10 +680,10 @@ type Publisher {
 
 type Query {
   animes(
-    page: Int = 1
+    page: PositiveInt = 1
 
     # Maximum 50
-    limit: Int = 2
+    limit: PositiveInt = 2
     order: OrderEnum = ranked
     kind: AnimeKindString
     status: AnimeStatusString
@@ -674,27 +715,27 @@ type Query {
     search: String
   ): [Anime!]!
   characters(
-    page: Int = 1
+    page: PositiveInt = 1
 
     # Maximum 50
-    limit: Int = 2
+    limit: PositiveInt = 2
     ids: [ID!]
     search: String
   ): [Character!]!
   contests(
-    page: Int = 1
+    page: PositiveInt = 1
 
     # Maximum 10
-    limit: Int = 2
+    limit: PositiveInt = 2
     ids: [ID!]
   ): [Contest!]!
   currentUser: User
   genres(entryType: GenreEntryTypeEnum!): [Genre!]!
   mangas(
-    page: Int = 1
+    page: PositiveInt = 1
 
     # Maximum 50
-    limit: Int = 2
+    limit: PositiveInt = 2
     order: OrderEnum = ranked
     kind: MangaKindString
     status: MangaStatusString
@@ -724,10 +765,10 @@ type Query {
     search: String
   ): [Manga!]!
   people(
-    page: Int = 1
+    page: PositiveInt = 1
 
     # Maximum 50
-    limit: Int = 2
+    limit: PositiveInt = 2
     ids: [ID!]
     search: String
     isSeyu: Boolean
@@ -735,16 +776,25 @@ type Query {
     isMangaka: Boolean
   ): [Person!]!
   userRates(
-    page: Int = 1
+    page: PositiveInt = 1
 
     # Maximum 50
-    limit: Int = 2
+    limit: PositiveInt = 2
 
     # ID of current user is used by default
     userId: ID
     targetType: UserRateTargetTypeEnum!
     status: UserRateStatusEnum
+    order: UserRateOrderInputType
   ): [UserRate!]!
+  users(
+    page: PositiveInt = 1
+
+    # Maximum 50
+    limit: PositiveInt = 2
+    ids: [ID!]
+    search: String
+  ): [User!]!
 }
 
 # List of values separated by comma.
@@ -771,7 +821,53 @@ type Related {
   id: ID!
   manga: Manga
   relationEn: String!
+    @deprecated(
+      reason: "use relation_kind/relation_text instead. This field will be deleted after 2025-01-01"
+    )
+  relationKind: RelationKindEnum!
   relationRu: String!
+    @deprecated(
+      reason: "use relation_kind/relation_text instead. This field will be deleted after 2025-01-01"
+    )
+  relationText: String!
+}
+
+enum RelationKindEnum {
+  # Adaptation
+  adaptation
+
+  # Alternative Setting
+  alternative_setting
+
+  # Alternative Version
+  alternative_version
+
+  # Character
+  character
+
+  # Full Story
+  full_story
+
+  # Other
+  other
+
+  # Parent Story
+  parent_story
+
+  # Prequel
+  prequel
+
+  # Sequel
+  sequel
+
+  # Side Story
+  side_story
+
+  # Spin-off
+  spin_off
+
+  # Summary
+  summary
 }
 
 type ScoreStat {
@@ -801,6 +897,14 @@ type Screenshot {
 # `199x`
 #
 scalar SeasonString
+
+enum SortOrderEnum {
+  # Sort in ascending order
+  asc
+
+  # Sort in descending order
+  desc
+}
 
 type StatusStat {
   count: Int!
@@ -847,6 +951,19 @@ type UserRate {
   text: String
   updatedAt: ISO8601DateTime!
   volumes: Int!
+}
+
+enum UserRateOrderFieldEnum {
+  # By id
+  id
+
+  # By updated_at
+  updated_at
+}
+
+input UserRateOrderInputType {
+  field: UserRateOrderFieldEnum!
+  order: SortOrderEnum!
 }
 
 enum UserRateStatusEnum {

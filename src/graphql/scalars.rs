@@ -151,3 +151,22 @@ impl MangaStatusString {
         self.0
     }
 }
+
+#[derive(cynic::Scalar, Debug)]
+pub struct PositiveInt(u32);
+
+impl PositiveInt {
+    pub fn new(s: impl Into<u32>) -> Self {
+        Self(s.into())
+    }
+
+    /// Returns a reference to the value of this `PositiveInt`
+    pub fn inner(&self) -> &u32 {
+        &self.0
+    }
+
+    /// Converts this `PositiveInt` into its inner value
+    pub fn into_inner(self) -> u32 {
+        self.0
+    }
+}
