@@ -34,13 +34,13 @@ use shikimori::client::ClientBuilder;
 use shikimori::cynic::QueryBuilder;
 
 use shikimori::graphql::anime::AnimeKind;
-use shikimori::graphql::types::EntityOrder;
-use shikimori::graphql::scalars::AnimeStatusString;
+use shikimori::graphql::scalars::{AnimeStatusString, PositiveInt};
 use shikimori::graphql::schema;
+use shikimori::graphql::types::EntityOrder;
 
 #[derive(cynic::QueryVariables, Debug)]
 pub struct AnimesQueryVariables {
-    pub page: i32,
+    pub page: PositiveInt,
     pub status: AnimeStatusString,
     pub order: EntityOrder,
 }
@@ -68,8 +68,8 @@ async fn main() {
 
     let response = client
         .query(AnimesQuery::build(AnimesQueryVariables {
-            page: 1,
-            status: StatusString::new("ongoing"),
+            page: PositiveInt::new(1u32),
+            status: AnimeStatusString::new("ongoing"),
             order: EntityOrder::Popularity,
         }))
         .await;
@@ -120,4 +120,11 @@ async fn main() {
 //         errors: None,
 //     },
 // )
+```
+
+In the `build.rs` file with feature `register-graphql-schema` enabled
+```rs
+fn main() {
+    shikimori::graphql::register_schema();
+}
 ```
