@@ -15,6 +15,7 @@ rust-version = "1.72"
 default = ["rustls-tls"]
 native-tls = ["reqwest/native-tls"]
 rustls-tls = ["reqwest/rustls-tls"]
+register-graphql-schema = ["cynic-codegen"]
 
 [dependencies]
 reqwest = { version = "0.12", default-features = false, features = ["json"] }
@@ -29,6 +30,7 @@ async-fn-stream = { version = "0.2" }
 # time = { version = "0.3", features = ["serde-human-readable"] }
 tower = { version = "0.4", features = ["limit", "buffer", "util"] }
 cynic = { version = "3.7" }
+cynic-codegen = { version = "3.7", optional = true }
 
 [dev-dependencies]
 tokio = { version = "1.38", features = [
