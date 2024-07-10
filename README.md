@@ -14,7 +14,7 @@
 Install [shikimori from crates.io](https://crates.io/crates/shikimori). Add the following line to your `Cargo.toml` file's dependencies section:
 
 ```toml
-shikimori = "0.3"
+shikimori = "0.4"
 ```
 
 Or you can add with cargo
