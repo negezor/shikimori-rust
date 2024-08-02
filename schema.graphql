@@ -323,9 +323,6 @@ enum ExternalLinkKindEnum {
   # Kage Project
   kage_project
 
-  # subs.com.ru
-  subs_com_ru
-
   # Twitter/X
   twitter
 
@@ -334,9 +331,6 @@ enum ExternalLinkKindEnum {
 
   # Crunchyroll
   crunchyroll
-
-  # Wakanim
-  wakanim
 
   # Amazon
   amazon
@@ -361,9 +355,6 @@ enum ExternalLinkKindEnum {
 
   # Okko
   okko
-
-  # more.tv
-  more_tv
 
   # Youtube
   youtube
@@ -783,7 +774,7 @@ type Query {
 
     # ID of current user is used by default
     userId: ID
-    targetType: UserRateTargetTypeEnum!
+    targetType: UserRateTargetTypeEnum
     status: UserRateStatusEnum
     order: UserRateOrderInputType
   ): [UserRate!]!
