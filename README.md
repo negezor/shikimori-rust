@@ -31,7 +31,7 @@ You should also use [querygen](https://generator.cynic-rs.dev) to simplify your 
 use chrono::{DateTime, Utc};
 
 use shikimori::client::ClientBuilder;
-use shikimori::cynic::QueryBuilder;
+use shikimori::cynic::{self, QueryBuilder};
 
 use shikimori::graphql::anime::AnimeKind;
 use shikimori::graphql::scalars::{AnimeStatusString, PositiveInt};
