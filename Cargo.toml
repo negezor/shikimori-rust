@@ -33,7 +33,7 @@ cynic = { version = "3.7" }
 cynic-codegen = { version = "3.7", optional = true }
 
 [dev-dependencies]
-tokio = { version = "1.38", features = [
+tokio = { version = "1.39", features = [
     "macros",
     "rt-multi-thread"
 ] }
