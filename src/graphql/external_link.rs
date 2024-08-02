@@ -27,9 +27,6 @@ pub enum ExternalLinkKind {
     /// Kage Project
     KageProject,
 
-    /// subs.com.ru
-    SubsComRu,
-
     /// Twitter
     Twitter,
 
@@ -38,9 +35,6 @@ pub enum ExternalLinkKind {
 
     /// Crunchyroll
     Crunchyroll,
-
-    /// Wakanim
-    Wakanim,
 
     /// Amazon
     Amazon,
@@ -65,9 +59,6 @@ pub enum ExternalLinkKind {
 
     /// Okko
     Okko,
-
-    /// more.tv
-    MoreTv,
 
     /// Youtube
     Youtube,
