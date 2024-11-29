@@ -28,7 +28,7 @@ serde_json = { version = "1.0" }
 futures-util = { version = "0.3", default-features = false, features = ["std"] }
 async-fn-stream = { version = "0.2" }
 # time = { version = "0.3", features = ["serde-human-readable"] }
-tower = { version = "0.5", features = ["limit", "buffer", "util"] }
+tower = { version = "=0.4", features = ["limit", "buffer", "util"] }
 cynic = { version = "3.9" }
 cynic-codegen = { version = "3.9", optional = true }
 
