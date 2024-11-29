@@ -31,6 +31,7 @@ type Anime {
   malId: ID
   name: String!
   nextEpisodeAt: ISO8601DateTime
+  opengraphImageUrl: String
   personRoles: [PersonRole!]
   poster: Poster
   rating: AnimeRatingEnum
@@ -221,6 +222,9 @@ enum ContestMatchStateEnum {
 
   # started
   started
+
+  # freezed
+  freezed
 
   # finished
   finished
@@ -459,6 +463,7 @@ type Manga {
   licensors: [String!]
   malId: ID
   name: String!
+  opengraphImageUrl: String
   personRoles: [PersonRole!]
   poster: Poster
   publishers: [Publisher!]!

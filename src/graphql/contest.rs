@@ -5,6 +5,7 @@ use super::schema;
 pub enum ContestMatchState {
     Created,
     Started,
+    Freezed,
     Finished,
 }
 
