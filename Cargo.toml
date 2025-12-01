@@ -1,6 +1,6 @@
 [package]
 name = "shikimori"
-version = "0.4.3"
+version = "0.4.4"
 edition = "2024"
 description = "An unofficial async Rust library that allows you to interact with the Shikimori API"
 authors = ["Negezor <negezor@gmail.com>"]

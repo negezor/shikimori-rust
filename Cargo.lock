@@ -1238,7 +1238,7 @@ dependencies = [
 
 [[package]]
 name = "shikimori"
-version = "0.4.3"
+version = "0.4.4"
 dependencies = [
  "async-fn-stream",
  "chrono",
