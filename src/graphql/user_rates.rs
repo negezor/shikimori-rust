@@ -19,7 +19,7 @@ pub enum UserRateOrderField {
 
 #[derive(cynic::Enum, Clone, Hash, PartialEq, Eq, Debug)]
 #[cynic(graphql_type = "VideoKindEnum", rename_all = "snake_case")]
-enum VideoKind {
+pub enum VideoKind {
     Pv,
     CharacterTrailer,
     Cm,
@@ -29,4 +29,15 @@ enum VideoKind {
     Clip,
     EpisodePreview,
     Other,
+}
+
+#[derive(cynic::Enum, Clone, Hash, PartialEq, Eq, Debug)]
+#[cynic(graphql_type = "UserRateStatusEnum", rename_all = "snake_case")]
+pub enum UserRateStatus {
+    Planned,
+    Watching,
+    Rewatching,
+    Completed,
+    OnHold,
+    Dropped,
 }
