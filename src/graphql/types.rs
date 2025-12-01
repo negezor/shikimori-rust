@@ -31,6 +31,10 @@ pub enum EntityOrder {
     CreatedAt,
     /// created_at_desc
     CreatedAtDesc,
+    /// By field updated_at on entity
+    UpdatedAt,
+    /// updated_at_desc
+    UpdatedAtDesc,
 }
 
 #[derive(cynic::Enum, Clone, Hash, PartialEq, Eq, Debug)]

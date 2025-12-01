@@ -33,6 +33,12 @@ pub enum ExternalLinkKind {
     /// Anime 365
     SmotretAnime,
 
+    /// Shikimori
+    Shiki,
+
+    /// Amediateka
+    Amediateka,
+
     /// Crunchyroll
     Crunchyroll,
 
