@@ -1,7 +1,7 @@
 [package]
 name = "shikimori"
 version = "0.4.3"
-edition = "2021"
+edition = "2024"
 description = "An unofficial async Rust library that allows you to interact with the Shikimori API"
 authors = ["Negezor <negezor@gmail.com>"]
 license = "MIT"
@@ -9,7 +9,7 @@ readme = "README.md"
 repository = "https://github.com/negezor/shikimori-rust"
 keywords = ["shikimori", "api", "sdk", "wrapper", "async"]
 categories = ["api-bindings"]
-rust-version = "1.76"
+rust-version = "1.85"
 
 [features]
 default = ["rustls-tls"]
