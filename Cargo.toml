@@ -26,17 +26,17 @@ chrono = { version = "0.4", default-features = false, features = ["serde"] }
 url = { version = "2.5" }
 serde_json = { version = "1.0" }
 futures-util = { version = "0.3", default-features = false, features = ["std"] }
-async-fn-stream = { version = "0.2" }
+async-fn-stream = { version = "0.3" }
 # time = { version = "0.3", features = ["serde-human-readable"] }
 tower = { version = "=0.4", features = ["limit", "buffer", "util"] }
-cynic = { version = "3.9" }
-cynic-codegen = { version = "3.9", optional = true }
+cynic = { version = "3.12" }
+cynic-codegen = { version = "3.12", optional = true }
 
 [dev-dependencies]
-tokio = { version = "1.41", features = [
+tokio = { version = "1.48", features = [
     "macros",
     "rt-multi-thread"
 ] }
 
 [build-dependencies]
-cynic-codegen = { version = "3.9" }
+cynic-codegen = { version = "3.12" }
