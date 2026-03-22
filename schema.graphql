@@ -423,17 +423,17 @@ enum ExternalLinkKindEnum {
   # Youtube
   youtube
 
-  # ReadManga
-  readmanga
+  # ReManga
+  remanga
 
   # MangaLib
   mangalib
 
-  # ReManga
-  remanga
-
   # Baka-Updates
   mangaupdates
+
+  # ReadManga
+  readmanga
 
   # MangaDex
   mangadex
@@ -821,7 +821,7 @@ type Query {
 
     # Maximum 50
     limit: PositiveInt = 2
-    ids: [ID!]
+    ids: String
     search: String
   ): [Character!]!
   contests(
