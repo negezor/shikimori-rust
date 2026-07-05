@@ -4,7 +4,7 @@ use reqwest::{
     Client as ReqwestClient, ClientBuilder as ReqwestClientBuilder, Method, Proxy, Request,
     RequestBuilder, Response,
 };
-use tower::{BoxError, Service, ServiceExt, buffer::Buffer, limit::RateLimit};
+use tower::{BoxError, Service, ServiceExt, service_fn, util::BoxCloneService};
 
 use cynic::{GraphQlResponse, Operation};
 
@@ -114,17 +114,24 @@ impl ClientBuilder {
             .build()
             .expect("failed to build reqwest client");
 
+        let http_client_cloned = http_client.clone();
+
+        let service = tower::ServiceBuilder::new()
+            .buffer(10)
+            // 90rpm, here are small compensation network costs
+            .rate_limit(90, Duration::from_millis(92000))
+            // 5rps, here are small compensation network costs
+            .rate_limit(5, Duration::from_millis(1110))
+            .service(service_fn(move |req: Request| {
+                let client = http_client_cloned.clone();
+                async move { client.execute(req).await }
+            }));
+
         Client {
             api_key: self.api_key,
             api_url: self.api_url,
             http_client: http_client.clone(),
-            http_service: tower::ServiceBuilder::new()
-                .buffer(10)
-                // 90rpm, here are small compensation network costs
-                .rate_limit(90, Duration::from_millis(92000))
-                // 5rps, here are small compensation network costs
-                .rate_limit(5, Duration::from_millis(1110))
-                .service(http_client),
+            http_service: BoxCloneService::new(service),
         }
     }
 }
@@ -141,7 +148,7 @@ pub struct Client {
     api_key: Option<String>,
     api_url: String,
     http_client: ReqwestClient,
-    http_service: Buffer<RateLimit<RateLimit<ReqwestClient>>, Request>,
+    http_service: BoxCloneService<Request, Response, BoxError>,
 }
 
 impl Client {
