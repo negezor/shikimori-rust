@@ -4,7 +4,7 @@ use reqwest::{
     Client as ReqwestClient, ClientBuilder as ReqwestClientBuilder, Method, Proxy, Request,
     RequestBuilder, Response,
 };
-use tower::{BoxError, ServiceExt, service_fn, util::BoxCloneService};
+use tower::{BoxError, ServiceExt, service_fn, util::BoxCloneSyncService};
 
 use cynic::{GraphQlResponse, Operation};
 
@@ -132,7 +132,7 @@ impl ClientBuilder {
             api_key: self.api_key,
             api_url: self.api_url,
             http_client: http_client.clone(),
-            http_service: BoxCloneService::new(service),
+            http_service: BoxCloneSyncService::new(service),
         }
     }
 }
@@ -149,7 +149,7 @@ pub struct Client {
     api_key: Option<String>,
     api_url: String,
     http_client: ReqwestClient,
-    http_service: BoxCloneService<Request, Response, BoxError>,
+    http_service: BoxCloneSyncService<Request, Response, BoxError>,
 }
 
 impl Client {
