@@ -182,11 +182,7 @@ impl Client {
     }
 
     pub(crate) async fn send(&self, request: Request) -> Result<Response, BoxError> {
-        let mut svc = self.http_service.clone();
-
-        svc.ready().await?;
-
-        svc.call(request).await
+        self.http_service.clone().oneshot(request).await
     }
 
     pub async fn query<
