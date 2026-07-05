@@ -4,7 +4,7 @@ use reqwest::{
     Client as ReqwestClient, ClientBuilder as ReqwestClientBuilder, Method, Proxy, Request,
     RequestBuilder, Response,
 };
-use tower::{BoxError, Service, ServiceExt, service_fn, util::BoxCloneService};
+use tower::{BoxError, ServiceExt, service_fn, util::BoxCloneService};
 
 use cynic::{GraphQlResponse, Operation};
 
