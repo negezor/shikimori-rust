@@ -10,7 +10,7 @@ use cynic::{GraphQlResponse, Operation};
 
 use crate::error::Error;
 
-static CRATE_USER_AGENT: &str = concat!(
+const CRATE_USER_AGENT: &str = concat!(
     env!("CARGO_PKG_NAME"),
     "/",
     env!("CARGO_PKG_VERSION"),
