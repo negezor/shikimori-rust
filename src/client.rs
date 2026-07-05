@@ -17,6 +17,8 @@ const CRATE_USER_AGENT: &str = concat!(
     " (+https://github.com/negezor/shikimori-rust)",
 );
 
+const DEFAULT_API_URL: &str = "https://shikimori.io/api";
+
 #[derive(Debug)]
 pub struct ClientBuilder {
     api_key: Option<String>,
@@ -29,7 +31,7 @@ impl ClientBuilder {
     pub fn new() -> ClientBuilder {
         ClientBuilder {
             api_key: None,
-            api_url: "https://shikimori.io/api".to_owned(),
+            api_url: DEFAULT_API_URL.into(),
             reqwest_client_builder: ReqwestClientBuilder::new().user_agent(CRATE_USER_AGENT),
         }
     }
