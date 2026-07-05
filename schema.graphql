@@ -426,6 +426,9 @@ enum ExternalLinkKindEnum {
   # ReManga
   remanga
 
+  # Senkuro
+  senkuro
+
   # MangaLib
   mangalib
 

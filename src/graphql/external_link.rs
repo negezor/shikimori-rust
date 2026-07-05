@@ -78,6 +78,9 @@ pub enum ExternalLinkKind {
     /// ReManga
     Remanga,
 
+    /// Senkuro
+    Senkuro,
+
     /// Baka-Updates
     Mangaupdates,
 
