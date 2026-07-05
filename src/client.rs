@@ -172,7 +172,7 @@ impl Client {
     pub(crate) fn init_request(&self, method: Method, path: &str) -> RequestBuilder {
         let mut request: RequestBuilder = self
             .http_client
-            .request(method, self.api_url.clone() + path);
+            .request(method, format!("{}{}", self.api_url, path));
 
         if let Some(api_key) = &self.api_key {
             request = request.bearer_auth(api_key);
