@@ -114,17 +114,16 @@ impl ClientBuilder {
             .build()
             .expect("failed to build reqwest client");
 
-        let http_client_cloned = http_client.clone();
-
         let service = tower::ServiceBuilder::new()
             .buffer(10)
             // 90rpm, here are small compensation network costs
             .rate_limit(90, Duration::from_millis(92000))
             // 5rps, here are small compensation network costs
             .rate_limit(5, Duration::from_millis(1110))
-            .service(service_fn(move |req: Request| {
-                let client = http_client_cloned.clone();
-                async move { client.execute(req).await }
+            .service(service_fn({
+                let client = http_client.clone();
+
+                move |req| client.execute(req)
             }));
 
         Client {
