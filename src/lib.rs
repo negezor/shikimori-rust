@@ -13,7 +13,7 @@ pub mod error;
 
 // mod utils;
 
-mod types;
+// mod types;
 
 pub mod graphql;
 
