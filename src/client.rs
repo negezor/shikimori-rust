@@ -51,7 +51,7 @@ impl ClientBuilder {
 
     /// Base URL for Shikimori API
     ///
-    /// Default: `https://shikimori.one/api`
+    /// Default: `https://shikimori.io/api`
     ///
     /// ```
     /// use shikimori::client::ClientBuilder;
