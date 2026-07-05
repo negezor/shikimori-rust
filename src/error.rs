@@ -9,6 +9,8 @@ pub enum Error {
     UrlencodedSerializeError(comma_serde_urlencoded::ser::Error),
     #[error("box error: {}", .0)]
     BoxError(Box<dyn std::error::Error + Send + Sync>),
+    #[error("failed parse json {0} {1}")]
+    Json(serde_json::Error, String),
 
     #[error("shikimori error: {}, code: {:?}", .message, .code)]
     ShikimoriError { message: String, code: Option<u32> },

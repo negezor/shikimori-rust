@@ -212,10 +212,10 @@ impl Client {
             }
         };
 
-        let result = response
-            .json::<GraphQlResponse<ResponseData>>()
-            .await
-            .map_err(Error::HttpError)?;
+        let response_text = response.text().await.map_err(Error::HttpError)?;
+
+        let result: GraphQlResponse<ResponseData> =
+            serde_json::from_str(&response_text).map_err(|err| Error::Json(err, response_text))?;
 
         Ok(result)
     }
