@@ -9,17 +9,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "250f629c0161ad8107cf89319e990051fae62832fd343083bea452d93e2205fd"
 
 [[package]]
-name = "async-fn-stream"
-version = "0.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d4ba0c4baf81a0d8ab31618ffa3ae29ceeb970a6d0d82f76130753462e39d0ea"
-dependencies = [
- "futures-util",
- "pin-project-lite",
- "smallvec",
-]
-
-[[package]]
 name = "atomic-waker"
 version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1376,7 +1365,6 @@ dependencies = [
 name = "shikimori"
 version = "0.4.7"
 dependencies = [
- "async-fn-stream",
  "chrono",
  "comma_serde_urlencoded",
  "cynic",
