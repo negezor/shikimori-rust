@@ -68,6 +68,17 @@ impl ClientBuilder {
     /// use shikimori::client::ClientBuilder;
     ///
     /// ClientBuilder::new()
+    ///   .timeout(Duration::from_secs(30));
+    /// ```
+    pub fn timeout(mut self, timeout: Duration) -> ClientBuilder {
+        self.reqwest_client_builder = self.reqwest_client_builder.timeout(timeout);
+        self
+    }
+
+    /// ```
+    /// use shikimori::client::ClientBuilder;
+    ///
+    /// ClientBuilder::new()
     ///   .proxy(reqwest::Proxy::http("https://my.prox").unwrap());
     /// ```
     pub fn proxy(mut self, proxy: Proxy) -> ClientBuilder {
