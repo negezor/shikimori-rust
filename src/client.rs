@@ -66,6 +66,7 @@ impl ClientBuilder {
 
     /// ```
     /// use shikimori::client::ClientBuilder;
+    /// use std::time::Duration;
     ///
     /// ClientBuilder::new()
     ///   .timeout(Duration::from_secs(30));
