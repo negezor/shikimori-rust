@@ -408,6 +408,9 @@ enum ExternalLinkKindEnum {
   # Ivi
   ivi
 
+  # DEEP
+  deep
+
   # KinoPoisk HD
   kinopoisk_hd
 

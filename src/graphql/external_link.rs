@@ -54,6 +54,9 @@ pub enum ExternalLinkKind {
     /// Ivi
     Ivi,
 
+    // DEEP
+    Deep,
+
     /// KinoPoisk HD
     KinopoiskHd,
 
